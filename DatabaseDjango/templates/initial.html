@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>台大課程評價系統</title>
+</head>
+<script>
+    function returndropdown(elementId)
+    {
+        var v = document.getElementById(elementId).value;
+        var w = document.getElementById("column");
+        w.setAttribute("name",v);
+    }
+</script>
+<style>
+    .title {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        color: 	white;
+        background: #D0D0D0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 28px;
+        font-family: "PT Sans Narrow";
+        box-shadow:4px 4px 3px rgba(20%,20%,40%,0.5);
+        padding-bottom: 10px;
+        margin-bottom: 50px;
+    }
+
+    .selection_bar {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        letter-spacing:5pt;
+        font-family: "PT Sans Narrow";
+    }
+
+    .elements {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    .colume {
+        width: 2%;
+        display: flex;
+    }
+
+</style>
+        <h3 class="title">
+            <p class="item">台大課程評價系統</p>
+        </h3>
+
+    <div class="selection_bar">
+        <p>依照</p>
+        <form name="dropdwon">
+            <select id="fuck">
+　               <option value="CourseName">CourseName</option>
+　               <option value="CourseNumber">CourseNumber</option>
+　               <option value="Professor">Professor</option>
+            </select>
+        </form>
+    </div>
+
+    <div class="selection_bar" onclick="">
+        <p>搜尋</p>
+        <form action="retrieve_data" method="post">
+            {% csrf_token %}
+            <input type="text" name="欄位名稱" id="column">
+            <input type="submit" value="送出" onclick="returndropdown('fuck')">
+        </form>
+    </div>
+    <div>
+        <ul>
+            <div style="white-space: pre" class="elements">
+                <div class="colume">課程編號</div>
+                <div class="colume">課程名稱</div>
+                <div class="colume">教授</div>
+                <div class="colume">學年</div>
+                <div class="colume">必/選修</div>
+                <div class="colume">學分</div>
+                <div class="colume">點名方式</div>
+                <div class="colume">甜度</div>
+                <div class="colume">涼度</div>
+                <div class="colume">收穫程度</div>
+                <div class="colume">是否推薦</div>
+            </div>
+            {% for data in datas1 %}
+                <li style="white-space: pre" class="elements">
+                    <div class="colume">{{ data.CourseNumber }}</div>
+                    <div class="colume">{{ data.CourseName }}</div>
+                    <div class="colume">{{ data.Professor }}</div>
+                    <div class="colume">{{ data.Year }}</div>
+                    <div class="colume">{{ data.Category }}</div>
+                    <div class="colume">{{ data.Credit }}</div>
+                    <div class="colume">{{ data.RollCall }}</div>
+                    <div class="colume">{{ data.SweetScore }}</div>
+                    <div class="colume">{{ data.FreeScore }}</div>
+                    <div class="colume">{{ data.AcquisitionScore }}</div>
+                    <div class="colume">{{ data.Recommendation }}</div>
+                </li>
+            {% endfor %}
+            {% for data in datas2 %}
+                <li style="white-space: pre" class="elements">
+                    <div class="colume">{{ data.CourseNumber }}</div>
+                    <div class="colume">{{ data.CourseName }}</div>
+                    <div class="colume">{{ data.Professor }}</div>
+                    <div class="colume">{{ data.Year }}</div>
+                    <div class="colume">{{ data.Category }}</div>
+                    <div class="colume">{{ data.Credit }}</div>
+                    <div class="colume">{{ data.RollCall }}</div>
+                    <div class="colume">{{ data.SweetScore }}</div>
+                    <div class="colume">{{ data.FreeScore }}</div>
+                    <div class="colume">{{ data.AcquisitionScore }}</div>
+                    <div class="colume">{{ data.Recommendation }}</div>
+                </li>
+            {% endfor %}
+            {% for data in datas3 %}
+                <li style="white-space: pre" class="elements">
+                    <div class="colume">{{ data.CourseNumber }}</div>
+                    <div class="colume">{{ data.CourseName }}</div>
+                    <div class="colume">{{ data.Professor }}</div>
+                    <div class="colume">{{ data.Year }}</div>
+                    <div class="colume">{{ data.Category }}</div>
+                    <div class="colume">{{ data.Credit }}</div>
+                    <div class="colume">{{ data.RollCall }}</div>
+                    <div class="colume">{{ data.SweetScore }}</div>
+                    <div class="colume">{{ data.FreeScore }}</div>
+                    <div class="colume">{{ data.AcquisitionScore }}</div>
+                    <div class="colume">{{ data.Recommendation }}</div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
